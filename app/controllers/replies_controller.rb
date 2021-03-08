@@ -1,10 +1,10 @@
 class RepliesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_reply, only: [:edit, :update, :show, :destroy]
-  before_action :set_discussion, except: [:new]
+  before_action :set_discussion
 
   def create
-    @reply = @discussion.replies.create(params[:reply]).permit(:reply, :discussion_id)
+    @reply = @discussion.replies.create(reply_params)
     @reply.user_id = current_user.id
 
     respond_to do |format|
@@ -15,6 +15,7 @@ class RepliesController < ApplicationController
         format.html {redirect_to discussion_path(@discussion),
           notice: 'Reply did not save. Please try again'}
           format.js
+      end
     end
   end
 
@@ -40,6 +41,7 @@ class RepliesController < ApplicationController
       else
         format.html{render :edit}
       end
+    end
   end
 
   private
@@ -53,6 +55,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.require(:reply).permit(:reply)
+    params.require(:reply).permit(:reply, :discussion_id)
   end
 end

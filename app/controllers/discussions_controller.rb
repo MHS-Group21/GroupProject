@@ -1,6 +1,6 @@
 class DiscussionsController < ApplicationController
   before_action :set_discussion, only: %i[ show edit update destroy ]
-  before_action :find_channels, only: [:index, :show, :new, :edit]
+  before_action :find_channels, only: [:index, :show, :new, :edit, :create]
   before_action :authenticate_user!, except: [:index, :show]
 
 
@@ -72,6 +72,6 @@ class DiscussionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def discussion_params
-      params.require(:discussion).permit(:title, :content)
+      params.require(:discussion).permit(:title, :content, :channel_id)
     end
 end

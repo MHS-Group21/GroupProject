@@ -28,7 +28,7 @@
           - if user_signed_in?
             .navbar-item
               .field.is-grouped
-                = link_to 'New Discussion', '#', class:"button is-info"
+                = link_to 'New Discussion', new_discussion_path, class:"button is-info"
             .navbar-item.has-dropdown.is-hoverable
               = link_to 'Account', edit_user_registration_path, class: "navbar-link"
               .navbar-dropdown.is-right
@@ -38,7 +38,7 @@
             .navbar-item
               .field.is-grouped
                 %p.control
-                  = link_to 'New Discussion', '#', class:"button is-info"
+                  = link_to 'New Discussion', new_discussion_path, class:"button is-info"
                 %p.control
                   = link_to "Sign In", new_user_session_path, class: "button is-light"
                 %p.control

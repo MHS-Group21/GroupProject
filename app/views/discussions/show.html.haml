@@ -1,10 +1,29 @@
-%p#notice= notice
-%p
-  %strong Title:
-  = @discussion.title
-%p
-  %strong Content:
-  = @discussion.content
-= link_to 'Edit', edit_discussion_path(@discussion)
-|
-= link_to 'Back', discussions_path
+.columns
+  .column.is-8
+    %h1.title.is-2.discussion-title
+      =@discussion.title
+    %h3.subtitle.is-5
+      =@discussion.user.username
+    .content
+      =@discussion.content
+    .level
+      .level-left
+        -#  check profile
+        .buttons
+          =link_to 'Edit Discussion', edit_discussion_path(@discussion), class:'button'
+          = link_to 'Delete', discussion_path(@discussion), method: :delete, data: {confimr: "Are you sure"}
+      .level-right
+        %h2.subtitle.is-5
+          =@discussion.replies.count
+          Replies
+    #discussion-replies
+      = render @discussion.replies
+    %h3.subtitle.is-3 leave a reply
+    -if user_signed_in?
+      = render 'replies/form'
+    -else
+      %p To reply you need to
+      = link_to 'login', new_user_session_path
+      or
+      =link_to 'Sign up', new_user_registration_path
+  = render 'sidebar'
