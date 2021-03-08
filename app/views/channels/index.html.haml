@@ -1,16 +1,26 @@
 %p#notice= notice
-%h1 Channels
-%table
-  %thead
-    %tr
-      %th Channel
-      %th{colspan: "3"}
-  %tbody
-    - @channels.each do |channel|
+%h1.title.is-2 Channels
+
+-if has_role?(:admin)
+  .level
+    .level-left
+    .level-right
+      =link_to 'New Channel', new_channel_path, class: 'button is-dark'
+  %table.table.is-fullwidth
+    %thead
       %tr
-        %td= channel.channel
-        %td= link_to 'Show', channel
-        %td= link_to 'Edit', edit_channel_path(channel)
-        %td= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Channel', new_channel_path
+        %th Channel
+        %th{colspan: "3"}
+    %tbody
+      - @channels.each do |channel|
+        %tr
+          %td= link_to channel.channel, channel
+  %td
+    .buttons.is-right
+      = link_to 'View Channel', channel, class:'button'
+      = link_to 'Edit Channel', edit_channel_path(channel), class:'button'
+      = link_to 'Delete', channel, class:'button is-danger', method: :delete, data: { confirm: "Are you sure you want to delete this channel? " }
+  %br/
+  = link_to 'New Channel', new_channel_path
+-else
+  You don't have acces to this page

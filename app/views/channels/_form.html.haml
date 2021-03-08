@@ -2,6 +2,8 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
-    = f.input :channel
+    .field
+      .control
+        = f.input :channel, input_html: {class: 'input'}, wrapper: false, label_html: {class: 'label'}
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'button-is-info'
