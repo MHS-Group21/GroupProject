@@ -13,7 +13,7 @@
           %br
           = markdown(reply.reply)
       -# check user
-    - if reply_author(reply)
+    - if reply_author(reply) || has_role?(:admin)
       %nav.level.is-mobile
         .level-left
           %a.level-item

@@ -6,4 +6,5 @@
         =link_to channel.channel
   %br
   -# admin role
-  = link_to 'New Channel', new_channel_path, class: 'button is-info'
+  - if has_role?(:admin)
+    = link_to 'New Channel', new_channel_path, class: 'button is-info'
