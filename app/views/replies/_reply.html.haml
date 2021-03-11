@@ -11,8 +11,9 @@
           %small
             =time_ago_in_words(reply.created_at)
           %br
-          =reply.reply
+          = markdown(reply.reply)
       -# check user
+    - if reply_author(reply)
       %nav.level.is-mobile
         .level-left
           %a.level-item

@@ -5,10 +5,11 @@
     %h3.subtitle.is-5
       =@discussion.user.username
     .content
-      =@discussion.content
+      = markdown(@discussion.content)
     .level
       .level-left
-        -#  check profile
+        -#  check profile so that only author of discussion can edit or remove
+      - if discussion_author(@discussion)
         .buttons
           =link_to 'Edit Discussion', edit_discussion_path(@discussion), class:'button'
           = link_to 'Delete', discussion_path(@discussion), method: :delete, data: {confimr: "Are you sure"}
