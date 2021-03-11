@@ -2,8 +2,8 @@
   .column.is-8
     %h1.title.is-2.discussion-title
       =@discussion.title
-    %h3.subtitle.is-5
-      =@discussion.user.username
+    %h3.subtitle.is-5.has-text-grey-lighter
+      by #{@discussion.user.username} in #{link_to @discussion.channel.channel, @discussion.channel}
     .content
       = markdown(@discussion.content)
     .level

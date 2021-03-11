@@ -3,7 +3,7 @@
   %ul.list
     - @channels.each do |channel|
       %li
-        =link_to channel.channel
+        =link_to channel.channel, channel
   %br
   -# admin role
   - if has_role?(:admin)

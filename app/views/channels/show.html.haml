@@ -1,7 +1,11 @@
 %p#notice= notice
-%p
-  %strong Channel:
-  = @channel.channel
-= link_to 'Edit', edit_channel_path(@channel)
-|
-= link_to 'Back', channels_path
+.level
+  .level-left
+    %h1.title.is-2= @channel.channel
+  .level-right
+    - if has_role?(:admin)
+      = link_to 'Edit Channel', edit_channel_path(@channel), class:"button"
+%hr/
+.columns
+  = render 'shared/discussions'
+  = render 'discussions/sidebar'
