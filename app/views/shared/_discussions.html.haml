@@ -15,7 +15,7 @@
                 %small
                   Posted #{time_ago_in_words(discussion.created_at)} ago in
                   - if discussion.channel
-                    = link_to discussion.channel.channel, discussion.channel
+                    = link_to discussion.channel.name, discussion.channel
                   by #{discussion.user.username}
         - if discussion_author(discussion) || has_role?(:admin)
           .column.has-text-right
