@@ -11,7 +11,7 @@
           %small
             =time_ago_in_words(reply.created_at)
           %br
-          = markdown(reply.reply)
+          = markdown(reply.reply_text)
       -# check user
     - if reply_author(reply) || has_role?(:admin)
       %nav.level.is-mobile

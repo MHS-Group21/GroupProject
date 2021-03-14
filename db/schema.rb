@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_154825) do
+ActiveRecord::Schema.define(version: 2021_03_14_194133) do
 
   create_table "channels", force: :cascade do |t|
-    t.string "channel"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "discussion_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_154825) do
   end
 
   create_table "replies", force: :cascade do |t|
-    t.text "reply"
+    t.text "reply_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "discussion_id"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_154825) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.boolean "id_verified", default: false
+    t.boolean "questions_complete", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

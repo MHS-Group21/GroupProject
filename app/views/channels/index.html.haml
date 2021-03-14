@@ -13,7 +13,7 @@
     %tbody
       - @channels.each do |channel|
         %tr
-          %td= link_to channel.channel, channel
+          %td= link_to channel.name, channel
           %td
             .buttons.is-right
               = link_to 'View Channel', channel, class:'button'
