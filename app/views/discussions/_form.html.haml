@@ -12,7 +12,7 @@
       %label.label Channel
       .control.has-icons-left
         %span.select
-          = f.input_field :channel_id, collection: @channels.map {|channel| [channel.channel, channel.id]}, prompt: "Select Channel"
+          = f.input_field :channel_id, collection: @channels.map {|channel| [channel.name, channel.id]}, prompt: "Select Channel"
         %span.icon.is-small.is-left
           %i.fa.fa-tag
   .form-actions

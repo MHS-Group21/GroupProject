@@ -14,7 +14,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
     click_on "New Channel"
 
-    fill_in "Channel", with: @channel.channel
+    fill_in "Channel", with: @channel.name
     click_on "Create Channel"
 
     assert_text "Channel was successfully created"
@@ -25,7 +25,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
     click_on "Edit", match: :first
 
-    fill_in "Channel", with: @channel.channel
+    fill_in "Channel", with: @channel.name
     click_on "Update Channel"
 
     assert_text "Channel was successfully updated"
