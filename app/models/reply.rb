@@ -8,7 +8,7 @@ class Reply < ApplicationRecord
     friendly_id :reply_text, use: [:slugged, :finders]
 
     def should_generate_new_friendly_id?
-      reply_changed?
+      reply_text_changed?
     end
 
   end
