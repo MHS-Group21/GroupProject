@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class ChannelsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
     @channel = channels(:one)
+    users(:one).add_role :admin
+    sign_in(users(:one))
   end
 
   test "should get index" do
@@ -17,10 +20,10 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create channel" do
     assert_difference('Channel.count') do
-      post channels_url, params: { channel: { channel: @channel.name } }
+      post channels_url, params: { channel: { name: @channel.name } }
     end
 
-    assert_redirected_to channel_url(Channel.last)
+    assert_redirected_to channels_url
   end
 
   test "should show channel" do
@@ -34,8 +37,8 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update channel" do
-    patch channel_url(@channel), params: { channel: { channel: @channel.name } }
-    assert_redirected_to channel_url(@channel)
+    patch channel_url(@channel), params: { channel: { name: @channel.name } }
+    assert_redirected_to channels_url
   end
 
   test "should destroy channel" do

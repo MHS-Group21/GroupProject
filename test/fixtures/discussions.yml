@@ -3,7 +3,10 @@
 one:
   title: MyString
   content: MyText
-
+  user: one
+  channel: one
 two:
   title: MyString
   content: MyText
+  user: two
+  channel: two
