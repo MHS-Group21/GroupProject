@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers: { registrations: 'registrations'}
 
+  # route for volunteers home page
+  get "volunteer", to: "home#volunteer", as: :volunteer
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
