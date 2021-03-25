@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # route for volunteers home page
   get "volunteer", to: "home#volunteer", as: :volunteer
   get "home", to: "home#index", as: :home_index
+  get "admin", to: "home#admin", as: :admin
   get "volunteer_list", to: "home#volunteer_list", as: :volunteer_list
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
