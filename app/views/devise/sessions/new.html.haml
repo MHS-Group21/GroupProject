@@ -13,6 +13,6 @@
           .field
             .control
               = f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable?
-          = f.button :submit, "Log in", class:"button is-info is-medium"
+          = f.button :submit, "Log in", class: "button is-link is-normal is-rounded is-fullwidth"
         %br/
         = render "devise/shared/links"
