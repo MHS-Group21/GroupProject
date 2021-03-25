@@ -19,7 +19,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "redirect if not user" do
+  test "redirect if not volunteer" do
     # Signs out the user for this test
     sign_out :user
     sign_in users(:two)
@@ -33,5 +33,6 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get home_index_path
     assert_response :redirect
   end
+
 
 end

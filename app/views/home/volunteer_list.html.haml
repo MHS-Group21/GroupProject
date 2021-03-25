@@ -1,0 +1,16 @@
+%section.section
+  .container
+    .columns.is-centered
+      .column.is-4
+        %h2.title.is-2.is-spaced Volunteer List
+    %table.table.is-fullwidth
+      %tr
+        %td.subtitle.is-3 Volunteer Name
+        %td.subtitle.is-3 ID Verification
+        %td.subtitle.is-3 Questionnaire
+        -# lists through users who are volunteers and displays usernames
+        - @users.each do |u|
+          %tr
+            %td= u.username
+            %td
+            %td
