@@ -9,23 +9,24 @@
       = markdown(@discussion.content)
     .level
       .level-left
-        -#  check profile so that only author of discussion can edit or remove
+      .level-left
+        -#  check profile so that only author of discussion can edit or remove. TEST PASSED SUCCESFULLY: ONLY USERS CAN EDIT THEIR OWN COMMENT
       - if discussion_author(@discussion)
         .buttons
           =link_to 'Edit Discussion', edit_discussion_path(@discussion), class:'button'
-          = link_to 'Delete', discussion_path(@discussion), method: :delete, data: {confimr: "Are you sure"}
-      .level-right
+          =link_to 'Delete', discussion_path(@discussion), class:'button', method:'delete' ,data: {confirm: "Are you sure?"}
+
         %h2.subtitle.is-5
           =@discussion.replies.count
-          Replies
+          Replies   
     #discussion-replies
       = render @discussion.replies
-    %h3.subtitle.is-3 leave a reply
+    %h3.subtitle.is-3 Reply
     -if user_signed_in?
       = render 'replies/form'
     -else
       %p To reply you need to
-      = link_to 'login', new_user_session_path
+      = link_to 'Log In', new_user_session_path
       or
-      =link_to 'Sign up', new_user_registration_path
+      =link_to 'Sign Up', new_user_registration_path
   = render 'sidebar'
