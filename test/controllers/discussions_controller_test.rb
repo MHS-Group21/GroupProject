@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class DiscussionsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
     @discussion = discussions(:one)
+    sign_in(users(:two))
   end
 
   test "should get index" do
@@ -17,7 +19,7 @@ class DiscussionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create discussion" do
     assert_difference('Discussion.count') do
-      post discussions_url, params: { discussion: { content: @discussion.content, title: @discussion.title } }
+      post discussions_url, params: { discussion: { content: @discussion.content, title: @discussion.title, channel_id: channels(:one).id } }
     end
 
     assert_redirected_to discussion_url(Discussion.last)
@@ -34,7 +36,7 @@ class DiscussionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update discussion" do
-    patch discussion_url(@discussion), params: { discussion: { content: @discussion.content, title: @discussion.title } }
+    patch discussion_url(@discussion), params: { discussion: { content: @discussion.content, title: @discussion.title, channel_id: channels(:one).id } }
     assert_redirected_to discussion_url(@discussion)
   end
 
