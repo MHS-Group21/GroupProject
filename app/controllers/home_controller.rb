@@ -25,7 +25,7 @@ class HomeController < ApplicationController
   end
 
   def volunteer
-    unless current_user.present? && (current_user.volunteer == true || current_user.has_role?(:admin))
+    unless current_user.present? && current_user.volunteer == true
       # Alert text to let them know why they can't access the page
       redirect_to root_path, alert: "Only a volunteer can view this page"
     end
