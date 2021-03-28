@@ -7,4 +7,8 @@ class User < ApplicationRecord
          
   has_many :discussions, dependent: :destroy
   has_many :channels, through: :discussions
+
+  #this is a scope to check if a user is a volunteer
+  scope :volunteer_list, -> { where(volunteer: true) }
+
 end
