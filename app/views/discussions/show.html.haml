@@ -13,8 +13,8 @@
         -#  check profile so that only author of discussion can edit or remove. TEST PASSED SUCCESFULLY: ONLY USERS CAN EDIT THEIR OWN COMMENT
       - if discussion_author(@discussion)
         .buttons
-          =link_to 'Edit Discussion', edit_discussion_path(@discussion), class:'button'
-          =link_to 'Delete', discussion_path(@discussion), class:'button', method:'delete' ,data: {confirm: "Are you sure?"}
+          =link_to 'Edit Discussion', edit_discussion_path(@discussion), class:'button button is-info is-outlined'
+          =button_to 'Delete', discussion_path(@discussion), class:'button button is-info is-outlined', method:'delete' ,data: {confirm: "Are you sure?"}
 
         %h2.subtitle.is-5
           =@discussion.replies.count
@@ -30,5 +30,4 @@
       or
       =link_to 'Sign Up', new_user_registration_path
   = render 'sidebar'
-
 -#a
