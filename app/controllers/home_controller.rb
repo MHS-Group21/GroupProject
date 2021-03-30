@@ -2,11 +2,11 @@ class HomeController < ApplicationController
   # Empty action at the moment so it could be removed later
   def index
   # If condition to send users to the right path
-    # If user is not logged in, sends them to the root path 
+    # If user is not logged in, sends them to the root path
     if !current_user.present?
       redirect_to root_path, alert: "Please sign in to view this page"
     # If user is volunteer, sends them to the volunteer path
-    elsif current_user.volunteer == true 
+    elsif current_user.volunteer == true
       redirect_to volunteer_path, notice: "Welcome Volunteer"
     # TODO If user is admin, sends them to the admin path
     elsif current_user.has_role?(:admin)
@@ -39,6 +39,24 @@ class HomeController < ApplicationController
       redirect_to root_path, alert: "Only an admin can view this page"
     end
     @users = User.volunteer_list
+  end
+
+  def contact
+  end
+
+  def request_contact
+    name = params[:name]
+    email = params[:email]
+    message = params[:message]
+    if email.blank? | message.blank?
+      flash[:alert] = "Make sure that email and message are not left blank"
+      redirect_to request.referer
+    else
+      # Send an email
+      flash[:notice] = "Thank you for contacting us, we'll reply as soon as possible"
+      redirect_to root_path
+    end
+
   end
 
 end

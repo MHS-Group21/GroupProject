@@ -1,0 +1,13 @@
+%h1= "Contact page"
+
+= form_tag request_contact_path, method: 'post' do
+  = label_tag :name, "Name"
+  = text_field_tag :name, '', title: "Enter Name", size: 50
+
+  = label_tag :email, t('.email')
+  = email_field_tag :email, '', title: "Enter email"
+
+  = label_tag :message, t('.message')
+  = text_field_tag :message, '', title: t('.enter_message'), size: 100
+
+  = submit_tag "Contact us"
