@@ -15,11 +15,12 @@ users = User.create([
   {email: 'felicia@mhs.org', username: 'Felicia', password: 'password'},
   {email: 'mayu@mhs.org', username: 'Mayu', password: 'password'},
   {email: 'aron@mhs.org', username: 'Aron', password: 'password'},
+  {email: 'jake@mhs.org', username: 'Jake', password: 'password'},
   {email: 'niall@mhs.org', username: 'Niall', password: 'password'}
   ])
 
   users[0].add_role :admin
-  users[1].add_role :admind
+  users[1].add_role :admin
 
 channels = Channel.create([
   {name: 'Physical Fitness'},
