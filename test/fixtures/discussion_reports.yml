@@ -9,7 +9,7 @@ one:
   user: one
   review_status: 0
 two:
-  discussion: one
+  discussion: two
   user: one
   review_status: 1
 # column: value
