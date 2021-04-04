@@ -37,3 +37,15 @@ discussions = Discussion.create([
   {title: 'Community Service ', user: users[3], channel: channels[3], content: "Consider community service or another activity that you enjoy. These situations present great opportunities to meet people and cultivate new friendships and social interactions."},
   {title: 'Meditation', user: users[4], channel: channels[4], content: "Meditation is one effective method we can use to combat stress. A simple and easy to follow form of meditation is to simple focus on your breath. This can be done whilst sitting or lying down (whichever is more comfortable), or even on a walk. Doing this for 10-15 minutes a day can help you to detress."}
   ])
+
+  replies = Reply.create([
+    {discussion: discussions[0], user: users[0], reply_text: "Yes OMG I love dogs "},
+    {discussion: discussions[0], user: users[1], reply_text: "I'm more of a cat person"},
+    {discussion: discussions[1], user: users[2], reply_text: "First"},
+    {discussion: discussions[1], user: users[3], reply_text: "Depression is pretty gay ngl"},
+    {discussion: discussions[1], user: users[4], reply_text: "Woah that's kinda homophobic"},
+    {discussion: discussions[2], user: users[5], reply_text: "Thanks this really helped"},
+    {discussion: discussions[3], user: users[0], reply_text: "This is difficult to do during the pandemic unforntunately"},
+    {discussion: discussions[4], user: users[1], reply_text: "This was super helpful."},
+    ])
+  
