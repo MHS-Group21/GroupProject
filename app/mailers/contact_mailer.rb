@@ -5,7 +5,7 @@ class ContactMailer < ApplicationMailer
     @name = name
     @message = message
 
-    mail cc: @email
+    mail to: "mhs.group21@gmail.com", cc: @email
   end
 
 end
