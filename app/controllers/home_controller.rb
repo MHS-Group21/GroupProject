@@ -44,16 +44,23 @@ class HomeController < ApplicationController
   def contact
   end
 
+  #sends contact email to user
   def request_contact
     @name = params[:name]
     @email = params[:email]
     @message = params[:message]
+    #checks if the email or message is left blank
     if @email.blank? | @message.blank?
+      #alerts user that the email or message has been left blank
       flash[:alert] = "Make sure that email and message are not left blank"
+      #refreshes the page
       redirect_to request.referer
     else
+      #sends the email
       ContactMailer.contact_email(@email, @name, @message).deliver
+      #sends a notice that confirms that the email has been sent
       flash[:notice] = "Thank you for contacting us, we'll reply as soon as possible"
+      #redirects to the home page
       redirect_to root_path
     end
 

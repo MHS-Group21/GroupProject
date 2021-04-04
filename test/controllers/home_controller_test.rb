@@ -8,7 +8,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get volunteer_path
     assert_response :success
   end
-  
+
   test "redirect from volunteer_path if not logged in" do
     get volunteer_path
     assert_response :redirect
@@ -40,6 +40,18 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:two)
     get admin_path
     assert_response :redirect
+  end
+
+  test "should get contact" do
+    get contact_url
+    assert_response :success
+  end
+
+  test "should post request contact" do
+    post request_contact_url, params:{name: "Matthew", email: "matthew@me.com", message: "Hello"}
+      assert_response :redirect
+      assert_nil flash[:alert]
+      assert_not_empty flash[:notice]
   end
 
 end
