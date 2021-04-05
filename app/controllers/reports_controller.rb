@@ -54,6 +54,8 @@ class ReportsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    #If discussion_id param is present find report of that discussion
+    #Otherwise use reply_id param to find report of that reply
     def set_report
       if is_discussion
         @report = DiscussionReport.where(discussion_id: params[:discussion_id])

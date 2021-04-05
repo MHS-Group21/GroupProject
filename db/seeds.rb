@@ -48,4 +48,12 @@ discussions = Discussion.create([
     {discussion: discussions[3], user: users[0], reply_text: "This is difficult to do during the pandemic unforntunately"},
     {discussion: discussions[4], user: users[1], reply_text: "This was super helpful."},
     ])
-  
+
+  discussion_reports = DiscussionReport.create([
+    {discussion: discussions[0], review_status: 0}
+    ])
+
+  reply_reports = DiscussionReport.create([
+    {reply: replies[3], review_status: 1},
+    {reply: replies[2], review_status: 0}
+    ])
