@@ -1,10 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  reply_text: MyText
+  reply: one
+  user: one
+  review_status: 1
 
 two:
-  reply_text: MyText
-  
-three:
-  reply_text: MyText
+  reply: two
+  user: two
+  review_status: 1
