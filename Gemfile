@@ -23,6 +23,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 #haml for views
 gem 'haml'
+#for easily clearing database
+gem 'database_cleaner'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -34,7 +36,7 @@ gem 'haml'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Gems that are used from tutorial
+
 gem 'bulma-rails', '~> 0.6.2' #CSS framework
 gem 'simple_form', '~> 5.1.0'  #Simpler forms
 gem 'devise', '~> 4.4', '>= 4.4.1' #User authentication platform

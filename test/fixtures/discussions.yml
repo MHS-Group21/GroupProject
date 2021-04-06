@@ -10,3 +10,8 @@ two:
   content: MyText
   user: two
   channel: two
+three:
+  title: MyString2
+  content: MyText2
+  user: two
+  channel: two

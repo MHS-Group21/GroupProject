@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_123333) do
+ActiveRecord::Schema.define(version: 2021_04_06_104328) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,17 @@ ActiveRecord::Schema.define(version: 2021_03_25_123333) do
     t.datetime "updated_at", null: false
     t.integer "discussion_id"
     t.string "slug"
+  end
+
+  create_table "discussion_reports", force: :cascade do |t|
+    t.integer "discussion_id"
+    t.integer "user_id"
+    t.integer "review_status"
+    t.text "admin_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discussion_id"], name: "index_discussion_reports_on_discussion_id"
+    t.index ["user_id"], name: "index_discussion_reports_on_user_id"
   end
 
   create_table "discussions", force: :cascade do |t|
@@ -48,6 +59,18 @@ ActiveRecord::Schema.define(version: 2021_03_25_123333) do
     t.integer "discussion_id"
     t.integer "user_id"
     t.string "slug"
+    t.integer "parent_id"
+  end
+
+  create_table "reply_reports", force: :cascade do |t|
+    t.integer "reply_id"
+    t.integer "user_id"
+    t.integer "review_status"
+    t.text "admin_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reply_id"], name: "index_reply_reports_on_reply_id"
+    t.index ["user_id"], name: "index_reply_reports_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|

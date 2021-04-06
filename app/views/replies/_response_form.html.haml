@@ -1,0 +1,8 @@
+.box
+  .media
+    = form_with(model: [@discussion, @reply]) do |f|
+      = f.hidden_field :parent_id
+      .form-group
+        = f.text_area :reply_text, class: 'form-control'
+      = f.submit 'Submit', class: 'btn btn-primary'
+      = link_to 'Cancel', discussion_path(@discussion), class: 'btn btn-secondary'
