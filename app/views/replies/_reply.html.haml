@@ -24,7 +24,7 @@
       %nav.level.is-mobile
         .level-left
           %a.level-item
-            = link_to edit_discussion_reply_path(reply.discussion, reply) do
+            = link_to edit_discussion_reply_path(reply.discussion, reply), remote: true do
               %span.iscon.is-small
                 %i.fa.fa-pencil
           %a.level-item

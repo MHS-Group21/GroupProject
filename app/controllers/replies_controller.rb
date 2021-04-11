@@ -52,9 +52,9 @@ class RepliesController < ApplicationController
     @reply = @discussion.replies.find(params[:id])
     respond_to do |format|
       if @reply.update(reply_params)
-        format.html{redirect_to discussion_path(@discussion), notice: 'Reply was succesfulyl updated'}
+        format.js
       else
-        format.html{render :edit}
+        format.js
       end
     end
   end
