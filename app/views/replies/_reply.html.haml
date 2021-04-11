@@ -13,11 +13,12 @@
           = markdown(reply.reply_text)
       - # check user
       - unless reply.parent_id
-        %a.level-item
-          = link_to 'reply', new_discussion_reply_path(@discussion, parent_id: reply.id), remote: true, class: 'd-block'
-          - if reply.responses.any?
-            - reply.responses.each do |reply|
-              = render partial: 'replies/reply', locals: { reply: reply }
+        .responses{'id' => 'reply' + reply.id.to_s + 'responses'}
+          %a.level-item
+            = link_to 'reply', new_discussion_reply_path(@discussion, parent_id: reply.id), remote: true, class: 'd-block'
+            - if reply.responses.any?
+              - reply.responses.each do |reply|
+                = render partial: 'replies/reply', locals: { reply: reply }
         %div{:id => "response-form-#{reply.id}"}
     - if reply_author(reply) || has_role?(:admin)
       %nav.level.is-mobile

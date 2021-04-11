@@ -1,1 +1,5 @@
-$("<%= escape_javascript(render(@reply)) %>").appendTo('#discussion-replies')
+<% if @reply.parent_id %>
+  $("<%= escape_javascript(render(@reply)) %>").appendTo("#reply<%= escape_javascript(@reply.parent_id.to_s) %>responses")
+<% else %>
+  $("<%= escape_javascript(render(@reply)) %>").appendTo('#discussion-replies')
+<% end %>
