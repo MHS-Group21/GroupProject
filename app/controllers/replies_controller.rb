@@ -41,7 +41,6 @@ class RepliesController < ApplicationController
   def destroy
     @reply = @discussion.replies.find(params[:id])
     @reply.destroy
-    redirect_to discussion_path(@discussion)
   end
 
   def edit

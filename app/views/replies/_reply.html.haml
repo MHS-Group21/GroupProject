@@ -28,6 +28,6 @@
               %span.iscon.is-small
                 %i.fa.fa-pencil
           %a.level-item
-            = link_to [reply.discussion, reply], method: :delete, data: {confirm: "are you sure"} do
+            = link_to [reply.discussion, reply], method: :delete, remote: true, data: {confirm: "are you sure"} do
               %span.iscon.is-small
                 %i.fa.fa-trash-o
