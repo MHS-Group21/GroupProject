@@ -1,0 +1,19 @@
+%section.section
+  .container
+    .columns.is-centered
+      %h2.title.is-2.is-spaced Tweets We Picked For You
+    - @tweets.each do |tweet|
+      .box
+        .media
+          %article.media-left
+            %figure.image.is-48x48
+              = image_tag "#{tweet.user.profile_image_url}", class: "rounded-circle"
+          .media-content
+            .content
+              %p
+                %strong
+                  = link_to "@#{tweet.user.name}", "https://twitter.com/#{tweet.user.screen_name}", target: :_blank
+                %small
+                  = link_to "View Tweet", "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}", target: :_blank
+                %br
+                = tweet.text

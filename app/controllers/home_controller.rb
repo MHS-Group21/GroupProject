@@ -41,4 +41,13 @@ class HomeController < ApplicationController
     @users = User.volunteer_list
   end
 
+  def twitter
+    username = 'MHS_Group21'
+    options = {:count => 20, :include_rts => true}
+    @tweets = $client.user_timeline(username, options)
+    
+    # Method to get tweets from home timeline
+    # @tweets = $client.home_timeline
+  end
+
 end

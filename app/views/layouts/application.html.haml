@@ -30,9 +30,9 @@
             .navbar-item
               .field.is-grouped
                 = link_to 'New Discussion', new_discussion_path, class:"button is-info"
+                = link_to "Twitter", twitter_path, class: "button is-light"
             .navbar-item.has-dropdown.is-hoverable
               = link_to 'Account', edit_user_registration_path, class: "navbar-link"
-              
               .navbar-dropdown.is-right
                 -# If statement to take the user to home controller, index action
                 = link_to current_user.username, home_index_path, class:"navbar-item"
@@ -42,6 +42,8 @@
               .field.is-grouped
                 %p.control
                   = link_to 'New Discussion', new_discussion_path, class:"button is-info"
+                %p.control
+                  = link_to "Twitter", twitter_path, class: "button is-light"
                 %p.control
                   = link_to "Sign In", new_user_session_path, class: "button is-light"
                 %p.control
