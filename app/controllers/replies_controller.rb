@@ -4,6 +4,21 @@ class RepliesController < ApplicationController
   before_action :set_discussion
 
   def create
+  #   @reply = @discussion.replies.create(reply_params)
+  #   @reply.user_id = current_user.id
+  #
+  #   respond_to do |format|
+  #     if @reply.save
+  #       format.html { redirect_to discussion_path(@discussion)}
+  #       format.js # render create.js.erb
+  #     else
+  #       format.html {redirect_to discussion_path(@discussion),
+  #         notice: 'Reply did not save. Please try again'}
+  #         format.js
+  #     end
+  #   end
+  # end
+    @discussion = Discussion.find(params[:discussion_id])
     @reply = @discussion.replies.create(reply_params)
     @reply.user_id = current_user.id
 
@@ -13,13 +28,15 @@ class RepliesController < ApplicationController
         format.js # render create.js.erb
       else
         format.html {redirect_to discussion_path(@discussion),
-          notice: 'Reply did not save. Please try again'}
-          format.js
+        notice: 'Reply did not save. Please try again'}
+        format.js
       end
     end
   end
 
   def new
+    @discussion = Discussion.find(params[:discussion_id])
+    @reply = @discussion.replies.new(parent_id: params[:parent_id])
   end
 
   def destroy
@@ -55,6 +72,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.require(:reply).permit(:reply_text, :discussion_id)
+    params.require(:reply).permit(:reply_text, :discussion_id, :parent_id)
   end
 end

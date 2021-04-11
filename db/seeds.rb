@@ -21,6 +21,7 @@ users = User.create([
 
   users[0].add_role :admin
   users[1].add_role :admin
+  users[4].add_role :admin
 
 channels = Channel.create([
   {name: 'Physical Fitness'},
@@ -32,7 +33,7 @@ channels = Channel.create([
 
 discussions = Discussion.create([
   {title: 'Dog walks for mental Health', user: users[0], channel: channels[0], content: "Heading out for regular walks with our dogs provides great physical and mental health benefits; it's been shown to ease feelings of loneliness, anxiety, depression and stress. Understanding the health benefits of a good dog walk can help us appreciate how much our pets mean to us."},
-  {title: 'Little steps', user: users[1], channel: channels[1], content: "When coping with depression it can be hard to get out of bed sometimes. But setting small achievable such as getting out of bed or tidying your room can be a great first step in helping to put us in a positivive mindset"},
+  {title: 'Little steps', user: users[1], channel: channels[1], content: "When coping with depression it can be hard to get out of bed sometimes. But setting small achievable such as getting out of bed or tidying your room can be a great first step in helping to put us in a positive mindset"},
   {title: 'Grouding Techniques', user: users[2], channel: channels[2], content: "5: Acknowledge FIVE things you see around you\n4: Acknowledge FOUR things you can touch around you.\n3: Acknowledge THREE things you hear.\n2: Acknowledge TWO things you can smell.\n1: Acknowledge ONE thing you can taste."},
   {title: 'Community Service ', user: users[3], channel: channels[3], content: "Consider community service or another activity that you enjoy. These situations present great opportunities to meet people and cultivate new friendships and social interactions."},
   {title: 'Meditation', user: users[4], channel: channels[4], content: "Meditation is one effective method we can use to combat stress. A simple and easy to follow form of meditation is to simple focus on your breath. This can be done whilst sitting or lying down (whichever is more comfortable), or even on a walk. Doing this for 10-15 minutes a day can help you to detress."}
@@ -53,7 +54,7 @@ discussions = Discussion.create([
     {discussion: discussions[0], review_status: 0}
     ])
 
-  reply_reports = DiscussionReport.create([
+  reply_reports = ReplyReport.create([
     {reply: replies[3], review_status: 1},
     {reply: replies[2], review_status: 0}
     ])

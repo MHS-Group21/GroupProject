@@ -1,26 +1,32 @@
-.box
-  .media
-    %article.media-left
-      %figure.image.is-48x48
-        =gravatar_image_tag(reply.user.email, class: 'border-radius-50', size: 48, alt: reply.user.username)
-    .media-content
-      .content
-        %p
-          %strong
-            =reply.user.username
-          %small
-            =time_ago_in_words(reply.created_at)
-          %br
-          = markdown(reply.reply_text)
-      -# check user
-    - if reply_author(reply) || has_role?(:admin)
-      %nav.level.is-mobile
-        .level-left
-          %a.level-item
-            =link_to edit_discussion_reply_path(reply.discussion, reply) do
-              %span.iscon.is-small
-                %i.fa.fa-pencil
-          %a.level-item
-            =link_to [reply.discussion, reply], method: :delete, data: {confirm: "are you sure"} do
-              %span.iscon.is-small
-                %i.fa.fa-trash-o
+- unless reply.parent_id || !reply.persisted?
+  .box
+    .media
+      %article.media-left
+        %figure.image.is-48x48= gravatar_image_tag(reply.user.email, class: 'border-radius-50', size: 48, alt: reply.user.username)
+      .media-content
+        .content
+          %p
+            %strong
+              = reply.user.username
+            %small
+              = time_ago_in_words(reply.created_at)
+            %br/
+            = markdown(reply.reply_text)
+        - # check user
+        %a.level-item
+          = link_to 'reply', new_discussion_reply_path(@discussion, parent_id: reply.id), remote: true, class: 'd-block'
+          - if reply.responses.any?
+            - reply.responses.each do |reply|
+              = render partial: 'replies/response', locals: { reply: reply }
+        %div{:id => "response-form-#{reply.id}"}
+      - if reply_author(reply) || has_role?(:admin)
+        %nav.level.is-mobile
+          .level-left
+            %a.level-item
+              = link_to edit_discussion_reply_path(reply.discussion, reply) do
+                %span.iscon.is-small
+                  %i.fa.fa-pencil
+            %a.level-item
+              = link_to [reply.discussion, reply], method: :delete, data: {confirm: "are you sure"} do
+                %span.iscon.is-small
+                  %i.fa.fa-trash-o
