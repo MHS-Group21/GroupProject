@@ -2,7 +2,7 @@
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Discussions
+    %title= content_for?(:html_title) ? yield(:html_title) : "MHS"
     = csrf_meta_tags
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
     = stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
