@@ -36,7 +36,6 @@ class RepliesController < ApplicationController
 
   def new
     @discussion = Discussion.find(params[:discussion_id])
-    @reply = @discussion.replies.new(parent_id: params[:parent_id])
   end
 
   def destroy

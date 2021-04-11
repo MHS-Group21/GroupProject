@@ -1,4 +1,4 @@
-.box
+.box{'id' => 'reply' + reply.id.to_s}
   .media
     %article.media-left
       %figure.image.is-48x48= gravatar_image_tag(reply.user.email, class: 'border-radius-50', size: 48, alt: reply.user.username)
