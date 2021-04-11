@@ -1,1 +1,1 @@
-document.querySelector("#response-form-<%= @reply.parent_id %>").innerHTML = ("<%= j render 'form' %>")
+document.querySelector("#response-form-<%= params[:parent_id] %>").innerHTML = ("<%= j render 'form' %>")

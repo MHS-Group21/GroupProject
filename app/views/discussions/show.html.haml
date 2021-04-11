@@ -20,10 +20,12 @@
           =@discussion.replies.count
           Replies
     #discussion-replies
-      = render @discussion.replies
+      - @discussion.replies.each do |reply|
+        -unless reply.parent_id
+          = render reply
     %h3.subtitle.is-3 Reply
     -if user_signed_in?
-      = render partial: 'replies/form', locals: { reply: @reply }
+      = render 'replies/form'
     -else
       %p To reply you need to
       = link_to 'Log In', new_user_session_path

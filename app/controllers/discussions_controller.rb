@@ -12,8 +12,6 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1 or /discussions/1.json
   def show
     @discussions = Discussion.all.order('created_at desc')
-    @reply = @discussion.replies.build()
-    print(@reply.discussion_id())
   end
 
   # GET /discussions/new
