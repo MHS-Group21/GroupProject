@@ -1,5 +1,6 @@
 <% if @reply.parent_id %>
   $("<%= escape_javascript(render(@reply)) %>").appendTo("#reply<%= escape_javascript(@reply.parent_id.to_s) %>responses")
+  $("#response-form-<%= escape_javascript(@reply.parent_id.to_s) %>").html("")
 <% else %>
   $("<%= escape_javascript(render(@reply)) %>").appendTo('#discussion-replies')
 <% end %>
