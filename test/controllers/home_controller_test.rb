@@ -25,6 +25,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  # Tests for admin page
   test "should get admin page" do
     sign_in users(:three)
     get admin_path
@@ -42,4 +43,17 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  # Tests for Twitter API
+  test "should get Twitter page (Not logged in)" do
+    get twitter_path
+    assert_response :success
+    assert_select "h2", text: "Tweets We Picked For You"
+    assert_select "title", text: "MHS - Tweets For You"
+  end
+
+  test "should get Twitter page (Logged in)" do
+    sign_in users(:two)
+    get twitter_path
+    assert_response :success    
+  end
 end
