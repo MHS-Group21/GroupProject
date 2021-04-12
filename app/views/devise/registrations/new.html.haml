@@ -18,7 +18,7 @@
             .control
               = f.input :password_confirmation, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }
           .field
-            .control 
+            .control
               = f.input :volunteer, :as => :boolean, :label => "Check the box if you like to be a volunteer", :input_html => {checked: "unchecked"}
               -# The line above gives a unchecked box where user's can opt to be a volunteer
           = f.button :submit, "Sign up", class:"button is-success is-rounded is-normal is-fullwidth"
