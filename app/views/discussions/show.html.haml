@@ -18,9 +18,11 @@
 
         %h2.subtitle.is-5
           =@discussion.replies.count
-          Replies   
+          Replies
     #discussion-replies
-      = render @discussion.replies
+      - @discussion.replies.each do |reply|
+        -unless reply.parent_id
+          = render reply
     %h3.subtitle.is-3 Reply
     -if user_signed_in?
       = render 'replies/form'

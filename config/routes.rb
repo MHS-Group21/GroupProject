@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Nested replies inside discussions
   resources :discussions do
-    resources :replies
+    resources :replies, constraints: {onlyajax: true}
   end
   devise_for :users, controllers: { registrations: 'registrations'}
 

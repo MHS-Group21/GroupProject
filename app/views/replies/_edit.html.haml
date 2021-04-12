@@ -1,5 +1,4 @@
-%h1.title.is-2.has-text-grey Edit reply
-= simple_form_for([@discussion, @reply]) do |f|
+= simple_form_for([@discussion, @reply], remote: true) do |f|
   .field
     .control
       =f.input :reply_text, input_html: {class: 'textarea'}, wrapper: false, label_html: {class: 'label'}
