@@ -13,6 +13,7 @@
         %h2.title.is-2 Volunteer Questionnaire
         = form_tag submit_questionnaire_path, method: 'post' do
 
+          %h.title.is-4 Policy Questions
           %div.question
             = label_tag :question1, "Question 1 - What is the goal of reflecting content?"
             %select#question1{:name => "question1"}
@@ -55,6 +56,7 @@
               %option{:value => 0} Try to convince them to not do it
               %option{:value => 0} Continue the conversation and act like they didn't say anything
 
+          %h.title.is-4 Scenario Questions
           %div.question
             = label_tag :question7, "Question 7 - What should you do if the speaker repeatedly asks for your personal information?"
             %select#question7{:name => "question7"}
@@ -114,8 +116,8 @@
           %div.question
             = label_tag :question15, "Question 15 - You are listening to a speaker and don't seem to be opening up. What should you do?"
             %select#question15{:name => "question15"}
-              %option{:value => 1} Tell them that you've probably heard worser stories
-              %option{:value => 0} Know that it's okay because not everyone is going to instantly open up
+              %option{:value => 0} Tell them that you've probably heard worser stories
+              %option{:value => 1} Know that it's okay because not everyone is going to instantly open up
               %option{:value => 0} Refer them to another listener and end the chat
 
           %div.question
@@ -123,14 +125,14 @@
             %select#question16{:name => "question16"}
               %option{:value => 0} I'm sure she will find something sooner than later
               %option{:value => 0} I was never this upset when I didn't have a job
-              %option{:value => 1} I would also feel worried if I was in the sane situation found a job
+              %option{:value => 1} I would also feel worried if I was in the same situation
 
           %div.question
             = label_tag :question17, "Question 17 - You are listening to a speaker and he tells you he did something that isn't illegal but really shocks you. You start to feel angered. What should you do?"
             %select#question17{:name => "question17"}
               %option{:value => 0} Tell them what they did makes you feel very uncomfortable and they were wrong for doing that
-              %option{:value => 1} Refer them to anther listener and end the chat so you can calm down
-              %option{:value => 0} Try your best to ignore it and continue with the conversation
+              %option{:value => 1} So you can calm down, refer them to anther listener and end the chat
+              %option{:value => 0} Tell them to not talk about that situation and move on
 
           %div.question
             = label_tag :question18, "Question 18 - You are listening to a speaker and he tells about their problem and you seem to not be able to relate. What should you do?"

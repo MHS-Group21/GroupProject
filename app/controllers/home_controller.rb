@@ -63,18 +63,18 @@ class HomeController < ApplicationController
 
   def submit_questionnaire
 
-    @total = Integer(params[:question1]) + Integer(params[:question2]) + Integer(params[:question3]) + Integer(params[:question4]) + Integer(params[:question5]) + Integer(params[:question6]) + Integer(params[:question7]) + Integer(params[:question8]) + Integer(params[:question9]) + Integer(params[:question10]) + Integer(params[:question11]) + Integer(params[:question12]) + Integer(params[:question13]) + Integer(params[:question14]) + Integer(params[:question15])+ Integer(params[:question16])+ Integer(params[:question17])+ Integer(params[:question18]) + Integer(params[:question19]) + Integer(params[:question20])
+    @total = Integer(params[:question1]) + Integer(params[:question2]) + Integer(params[:question3]) + Integer(params[:question4]) + Integer(params[:question5]) + Integer(params[:question6]) + Integer(params[:question7]) + Integer(params[:question8]) + Integer(params[:question9]) + Integer(params[:question10]) + Integer(params[:question11]) + Integer(params[:question12]) + Integer(params[:question13]) + Integer(params[:question14]) + Integer(params[:question15])+ Integer(params[:question16])+ Integer(params[:question17]) + Integer(params[:question18]) + Integer(params[:question19]) + Integer(params[:question20])
 
     if @total == 20
       flash.notice = "Well done. You have completed the volunteer training."
       current_user.quiz_complete = true
       current_user.save
-      redirect_to request.referer
+      redirect_to volunteer_path
     end
 
-    if @total < 25
-      flash.alert = @total
-      #flash.alert = "Unfortunately you have failed the training. You can try again when you're ready"
+    if @total < 20
+      #flash.alert = @total
+      flash.alert = "Unfortunately you have failed the training. You can try again when you're ready."
       redirect_to volunteer_path
     end
   end
