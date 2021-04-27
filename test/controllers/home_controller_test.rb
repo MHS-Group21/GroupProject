@@ -8,7 +8,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get volunteer_path
     assert_response :success
   end
-  
+
   test "redirect from volunteer_path if not logged in" do
     get volunteer_path
     assert_response :redirect
@@ -54,6 +54,25 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   test "should get Twitter page (Logged in)" do
     sign_in users(:two)
     get twitter_path
-    assert_response :success    
+    assert_response :success
   end
+
+  test "redirect from questionnaire if not volunteer" do
+    sign_in users(:two)
+    get questionnaire_path
+    assert_response :redirect
+  end
+
+  test "should get questionnaire page" do
+    sign_in users(:one)
+    get questionnaire_path
+    assert_response :success
+  end
+
+  test "should get redirect beacuse training is already completed" do
+    sign_in users(:four)
+    get questionnaire_path
+    assert_response :redirect
+  end
+
 end

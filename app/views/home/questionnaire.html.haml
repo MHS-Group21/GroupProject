@@ -5,53 +5,80 @@
         :css
           form label {display: block;margin-left: 10px;}
           form input {width: 100%; padding: 12px 20px;margin: 8px 0;display: inline-block; border: 1px solid #ccc;border-radius: 4px; box-sizing: border-box;}
-          input[type=submit] {background-color: #4CAF50; color: white; width: 100%; }
-          input[type=submit]:hover {background-color: #45a049;}
+          input[type=submit] {background-color: red; color: white; width: 100%; }
+
           div.question {padding: 10px;  border: 2px solid green;  margin: 10px;width: 100%; border-style: groove;border-radius:10px; }
           select {width: 100%}
 
+        %script{:language => "javascript", :type => "text/javascript"}
+          function checkform()
+          {
+          var f = document.forms["questionForm"].elements;
+          var cansubmit = true;
+
+          for (var i = 0; i < f.length; i++) {
+          if (f[i].value == -1) cansubmit = false;
+          }
+
+          if(cansubmit){
+          document.getElementById("submitbutton").disabled = false;
+          document.getElementById("submitbutton").style.backgroundColor = "#4CAF50";
+          }else{
+          document.getElementById("submitbutton").disabled = true;
+          document.getElementById("submitbutton").style.backgroundColor = "red";
+          }
+
+          }
+
+
         %h2.title.is-2 Volunteer Questionnaire
-        = form_tag submit_questionnaire_path, method: 'post' do
+        = form_tag submit_questionnaire_path, name: 'questionForm', method: 'post' do
 
           %h.title.is-4 Policy Questions
           %div.question
             = label_tag :question1, "Question 1 - What is the goal of reflecting content?"
-            %select#question1{:name => "question1"}
+            %select#question1{:name => "question1", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} To listen to the speaker so you can point out any mistakes that the speaker has made
               %option{:value => 1} To listen to the speaker and show that you are listening by drawing out more of the speaker's story
               %option{:value => 0} To memorize the speaker's story
 
           %div.question
             = label_tag :question2, "Question 2 - Which one of the following is a open-ended question?"
-            %select#question2{:name => "question2"}
+            %select#question2{:name => "question2", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 1} How are you feeling?
               %option{:value => 0} Do you still feel sad today?
               %option{:value => 0} Should you say that to her?
 
           %div.question
             = label_tag :question3, "Question 3 - When should you give advise?"
-            %select#question3{:name => "question3"}
+            %select#question3{:name => "question3", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} After the speaker tells their story
               %option{:value => 0} Around half way through the speaker's speaker
               %option{:value => 1} Never
 
           %div.question
             = label_tag :question4, "Question 4 - When is it acceptable to ask for personal information on the speaker?"
-            %select#question4{:name => "question4"}
-              %option{:value => 0} When the speaker says its fine
-              %option{:value => 0} When you think its appropriate to ask e.g. after the speaker finishes speaking
+            %select#question4{:name => "question4", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
+              %option{:value => 0} When the speaker says it's fine
+              %option{:value => 0} When you think it's appropriate to ask e.g. after the speaker finishes speaking
               %option{:value => 1} Never
 
           %div.question
             = label_tag :question5, "Question 5 - What should a listening not do?"
-            %select#question5{:name => "question5"}
+            %select#question5{:name => "question5", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Be friendly at all times
               %option{:value => 1} Give advise and their opinion
               %option{:value => 0} Try to understand how the speaker feels
 
           %div.question
             = label_tag :question6, "Question 6 - What should you do if the speaker tells you that they plan on hurting themselves?"
-            %select#question6{:name => "question6"}
+            %select#question6{:name => "question6", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 1} Refer them to the suicide line and end the chat
               %option{:value => 0} Try to convince them to not do it
               %option{:value => 0} Continue the conversation and act like they didn't say anything
@@ -59,101 +86,115 @@
           %h.title.is-4 Scenario Questions
           %div.question
             = label_tag :question7, "Question 7 - What should you do if the speaker repeatedly asks for your personal information?"
-            %select#question7{:name => "question7"}
+            %select#question7{:name => "question7", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Give them the information they are seeking for
               %option{:value => 0} Tell them incorrect information
               %option{:value => 1} Tell them to stop and if they persist then report them and end the chat
 
           %div.question
             = label_tag :question8, "Question 8 - What should if the speaker has not figured out a solution to their problems?"
-            %select#question8{:name => "question8"}
+            %select#question8{:name => "question8", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Try and keep them talking until they do find a solution
               %option{:value => 0} Direct the speaker to a different listener
               %option{:value => 1} Know that it's okay, my job isn't to solve their problem and just being heard is powerful in itself
 
           %div.question
             = label_tag :question9, "Question 9 - What should you do if the chat isn't going too well and the speaker seem angered?"
-            %select#question9{:name => "question9"}
+            %select#question9{:name => "question9", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 1} Show empathy and kindness no matter what and ask them how you could support them
               %option{:value => 0} Immediately leave the chat without saying another word
               %option{:value => 0} Tell them your problems instead to calm them down
 
           %div.question
             = label_tag :question10, "Question 10 - What should you do if the speaker is harassing you?"
-            %select#question10{:name => "question10"}
+            %select#question10{:name => "question10", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Ignore their comments
               %option{:value => 1} Politely ask them to stop and if they don't then end the chat and report them
               %option{:value => 0} Tell them to stop and start harassing them back
 
           %div.question
             = label_tag :question11, "Question 11 - You are listening to a speaker talking about their experience. You start to feel anxious and upset. What should you do?"
-            %select#question11{:name => "question11"}
+            %select#question11{:name => "question11", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 1} Refer the speaker to another listener
-              %option{:value => 0} Tell them to stop talking because its making you upset
+              %option{:value => 0} Tell them to stop talking because it's making you upset
               %option{:value => 0} Quickly end the chat without saying a word
 
           %div.question
             = label_tag :question12, "Question 12 - You are listening to a speaker. What should you do if they're being unclear or you don't understand what they're saying?"
-            %select#question12{:name => "question12"}
+            %select#question12{:name => "question12", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Explain to them they are not speaking clearly and they need to be less ambiguous
               %option{:value => 0} Act like you understood what they said and hopefully you can figure out
               %option{:value => 1} Ask a question to clarify
 
           %div.question
             = label_tag :question13, "Question 13 - You are listening to a speaker. Why might it be a good reason for you to share a bit of your story to the speaker?"
-            %select#question13{:name => "question13"}
+            %select#question13{:name => "question13", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 1} To offer the speaker some hope that things can get better
               %option{:value => 0} To show the speaker that it could be a lot worse
               %option{:value => 0} To impress the speaker with how much you have gone through
 
           %div.question
             = label_tag :question14, "Question 14 -  You are listening to a speaker and you need to leave soon What should you do?"
-            %select#question14{:name => "question14"}
-              %option{:value => 0} Don't mention it because its rude to interrupt and then just leave when the time comes
+            %select#question14{:name => "question14", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
+              %option{:value => 0} Don't mention it because it's rude to interrupt and then just leave when the time comes
               %option{:value => 1} Tell the speaker I need to leave soon and tell them the time you will leave
               %option{:value => 0} Just go offline
 
           %div.question
-            = label_tag :question15, "Question 15 - You are listening to a speaker and don't seem to be opening up. What should you do?"
-            %select#question15{:name => "question15"}
-              %option{:value => 0} Tell them that you've probably heard worser stories
+            = label_tag :question15, "Question 15 - You are listening to a speaker and they don't seem to be opening up. What should you do?"
+            %select#question15{:name => "question15", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
+              %option{:value => 0} Tell them that you have probably heard worse stories
               %option{:value => 1} Know that it's okay because not everyone is going to instantly open up
               %option{:value => 0} Refer them to another listener and end the chat
 
           %div.question
             = label_tag :question16, "Question 16 - You are listening to a speaker and she is feeling discourage because she hasn't found a job after months of searching. Which of the following thoughts would help you empathy with the speaker?"
-            %select#question16{:name => "question16"}
+            %select#question16{:name => "question16", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} I'm sure she will find something sooner than later
               %option{:value => 0} I was never this upset when I didn't have a job
               %option{:value => 1} I would also feel worried if I was in the same situation
 
           %div.question
             = label_tag :question17, "Question 17 - You are listening to a speaker and he tells you he did something that isn't illegal but really shocks you. You start to feel angered. What should you do?"
-            %select#question17{:name => "question17"}
+            %select#question17{:name => "question17", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Tell them what they did makes you feel very uncomfortable and they were wrong for doing that
               %option{:value => 1} So you can calm down, refer them to anther listener and end the chat
               %option{:value => 0} Tell them to not talk about that situation and move on
 
           %div.question
             = label_tag :question18, "Question 18 - You are listening to a speaker and he tells about their problem and you seem to not be able to relate. What should you do?"
-            %select#question18{:name => "question18"}
+            %select#question18{:name => "question18", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Lie and make up a story to make it seem like you can relate
               %option{:value => 1} Say something like "I can't even imagine what that must feel like"
               %option{:value => 0} Say you can't chat anymore because you cant relate and refer them to another listener they might be able to relate better
 
           %div.question
             = label_tag :question19, "Question 19 - You are listening to a speaker and they tell you that they need to leave but they haven't found a solution to their problem yet. What should you do?"
-            %select#question19{:name => "question19"}
+            %select#question19{:name => "question19", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 1} Tell them you understand and that it is ok to leave early
               %option{:value => 0} Try to get them to stay for a little bit longer
               %option{:value => 0} Give them explicit instructions about what they should do and how to do it
 
           %div.question
             = label_tag :question20, "Question 20 - You see someone harassing another user. What should you do?"
-            %select#question20{:name => "question20"}
+            %select#question20{:name => "question20", :onchange => "checkform()"}
+              %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Tell them to stop and tell them off
               %option{:value => 0} Ignore them because the user is able to report them
               %option{:value => 1} Report them so that the admins are aware of the user's activity
 
 
-          = submit_tag "Submit answers"
+          = submit_tag "Submit answers", id: "submitbutton", disabled: true
