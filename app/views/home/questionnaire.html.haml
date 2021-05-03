@@ -2,14 +2,7 @@
   .container
     .columns.is-centered
       .column.is-7
-        :css
-          form label {display: block;margin-left: 10px;}
-          form input {width: 100%; padding: 12px 20px;margin: 8px 0;display: inline-block; border: 1px solid #ccc;border-radius: 4px; box-sizing: border-box;}
-          input[type=submit] {background-color: red; color: white; width: 100%; }
-
-          div.question {padding: 10px;  border: 2px solid green;  margin: 10px;width: 100%; border-style: groove;border-radius:10px; }
-          select {width: 100%}
-
+      
         %script{:language => "javascript", :type => "text/javascript"}
           function checkform()
           {
@@ -44,7 +37,7 @@
               %option{:value => 0} To memorize the speaker's story
 
           %div.question
-            = label_tag :question2, "Question 2 - Which one of the following is a open-ended question?"
+            = label_tag :question2, "Question 2 - Which one of the following is an open-ended question?"
             %select#question2{:name => "question2", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
               %option{:value => 1} How are you feeling?
@@ -56,7 +49,7 @@
             %select#question3{:name => "question3", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
               %option{:value => 0} After the speaker tells their story
-              %option{:value => 0} Around half way through the speaker's speaker
+              %option{:value => 0} Around half way through the speaker's story
               %option{:value => 1} Never
 
           %div.question
@@ -68,7 +61,7 @@
               %option{:value => 1} Never
 
           %div.question
-            = label_tag :question5, "Question 5 - What should a listening not do?"
+            = label_tag :question5, "Question 5 - What should a listener not do?"
             %select#question5{:name => "question5", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Be friendly at all times
@@ -88,12 +81,12 @@
             = label_tag :question7, "Question 7 - What should you do if the speaker repeatedly asks for your personal information?"
             %select#question7{:name => "question7", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
-              %option{:value => 0} Give them the information they are seeking for
+              %option{:value => 0} Give them the information they are seeking
               %option{:value => 0} Tell them incorrect information
               %option{:value => 1} Tell them to stop and if they persist then report them and end the chat
 
           %div.question
-            = label_tag :question8, "Question 8 - What should if the speaker has not figured out a solution to their problems?"
+            = label_tag :question8, "Question 8 - What should you do if the speaker has not figured out a solution to their problem?"
             %select#question8{:name => "question8", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Try and keep them talking until they do find a solution
@@ -129,7 +122,7 @@
             %select#question12{:name => "question12", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Explain to them they are not speaking clearly and they need to be less ambiguous
-              %option{:value => 0} Act like you understood what they said and hopefully you can figure out
+              %option{:value => 0} Act like you understood what they said and hopefully you can figure it out
               %option{:value => 1} Ask a question to clarify
 
           %div.question
@@ -157,7 +150,7 @@
               %option{:value => 0} Refer them to another listener and end the chat
 
           %div.question
-            = label_tag :question16, "Question 16 - You are listening to a speaker and she is feeling discourage because she hasn't found a job after months of searching. Which of the following thoughts would help you empathy with the speaker?"
+            = label_tag :question16, "Question 16 - You are listening to a speaker and she is feeling discourage because she hasn't found a job after months of searching. Which of the following thoughts would help you empathise with the speaker?"
             %select#question16{:name => "question16", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
               %option{:value => 0} I'm sure she will find something sooner than later
@@ -169,22 +162,22 @@
             %select#question17{:name => "question17", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Tell them what they did makes you feel very uncomfortable and they were wrong for doing that
-              %option{:value => 1} So you can calm down, refer them to anther listener and end the chat
+              %option{:value => 1} So you can calm down, refer them to another listener and end the chat
               %option{:value => 0} Tell them to not talk about that situation and move on
 
           %div.question
-            = label_tag :question18, "Question 18 - You are listening to a speaker and he tells about their problem and you seem to not be able to relate. What should you do?"
+            = label_tag :question18, "Question 18 - You are listening to a speaker and he talks about his problem and you seem to not be able to relate. What should you do?"
             %select#question18{:name => "question18", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
               %option{:value => 0} Lie and make up a story to make it seem like you can relate
               %option{:value => 1} Say something like "I can't even imagine what that must feel like"
-              %option{:value => 0} Say you can't chat anymore because you cant relate and refer them to another listener they might be able to relate better
+              %option{:value => 0} Say you can't chat anymore because you can't relate and refer them to another listener because they might be able to relate better
 
           %div.question
             = label_tag :question19, "Question 19 - You are listening to a speaker and they tell you that they need to leave but they haven't found a solution to their problem yet. What should you do?"
             %select#question19{:name => "question19", :onchange => "checkform()"}
               %option{:selected => "selected", :value => -1} -
-              %option{:value => 1} Tell them you understand and that it is ok to leave early
+              %option{:value => 1} Tell them you understand and that it is ok to leave at any time
               %option{:value => 0} Try to get them to stay for a little bit longer
               %option{:value => 0} Give them explicit instructions about what they should do and how to do it
 
