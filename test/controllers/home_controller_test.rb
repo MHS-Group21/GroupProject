@@ -56,4 +56,13 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get twitter_path
     assert_response :success    
   end
+
+  # Tests for Policy Page
+  test "should get Policy page (Not logged in)" do
+    get policy_path
+    assert_response :success
+    assert_select "h2", text: "User Policy"
+    assert_select "title", text: "MHS - User Policy"
+  end
+  
 end
