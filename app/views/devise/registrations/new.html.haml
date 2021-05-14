@@ -23,6 +23,9 @@
             .control 
               = f.input :volunteer, :as => :boolean, :label => "Please check this box if you would like to be a volunteer", :input_html => {checked: "unchecked"}
               -# The line above gives a unchecked box where user's can opt to be a volunteer
-          = f.button :submit, "Sign up", class:"button is-success is-rounded is-normal is-fullwidth"
+          %h1
+            By signing up, you agree with our
+            %a{:href => "/policy"} policy
+          = f.button :submit, "Sign up", class:"button is-success is-rounded is-normal is-fullwidth mt-2"
         %br/
         = render "devise/shared/links"

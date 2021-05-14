@@ -51,4 +51,7 @@ class HomeController < ApplicationController
     # @tweets = $client.home_timeline
   end
 
+  def policy
+  end
+
 end
