@@ -2,7 +2,6 @@
 class RegistrationsController < Devise::RegistrationsController
 
   private
-
   # Allowing a new parameter to be passed when a user signs up for an account
   # Only allows things that are permitted
   def sign_up_params
