@@ -15,3 +15,22 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+function checkform()
+{
+var f = document.forms["questionForm"].elements;
+var cansubmit = true;
+
+for (var i = 0; i < f.length; i++) {
+  if (f[i].value == -1) cansubmit = false;
+}
+
+if(cansubmit){
+  document.getElementById("submitbutton").disabled = false;
+  document.getElementById("submitbutton").style.backgroundColor = "#4CAF50";
+}else{
+  document.getElementById("submitbutton").disabled = true;
+  document.getElementById("submitbutton").style.backgroundColor = "red";
+}
+
+}
