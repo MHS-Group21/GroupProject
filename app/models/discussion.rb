@@ -7,12 +7,11 @@ class Discussion < ApplicationRecord
 
     # presence check when creating a new discussion
     validates :title, :content, presence: true
-    resourcify
-    
+
     extend FriendlyId
     friendly_id :title, use: [:slugged, :finders]
 
-    # Method to create friendly urls 
+    # Method to create friendly urls
     def should_generate_new_friendly_id?
       title_changed?
     end
