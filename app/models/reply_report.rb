@@ -1,4 +1,5 @@
 class ReplyReport < ApplicationRecord
+  # Establishing the relationship
   belongs_to :reply
   belongs_to :user
 

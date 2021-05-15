@@ -17,4 +17,4 @@
                 %small
                   = link_to "View Tweet", "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}", target: :_blank
                 %br
-                = tweet.text
+                = tweet.full_text

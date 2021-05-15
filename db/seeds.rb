@@ -6,10 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # updated
-require 'database_cleaner'
 
-DatabaseCleaner.clean_with(:truncation)
-
+User.delete_all
 users = User.create([
   {email: 'james@mhs.org', username: 'James', password: 'password'},
   {email: 'felicia@mhs.org', username: 'Felicia', password: 'password'},
@@ -23,6 +21,7 @@ users = User.create([
   users[1].add_role :admin
   users[4].add_role :admin
 
+Channel.delete_all
 channels = Channel.create([
   {name: 'Physical Fitness'},
   {name: 'Depression'},
@@ -31,6 +30,7 @@ channels = Channel.create([
   {name: 'Stress'}
   ])
 
+Discussion.delete_all
 discussions = Discussion.create([
   {title: 'Dog walks for mental Health', user: users[0], channel: channels[0], content: "Heading out for regular walks with our dogs provides great physical and mental health benefits; it's been shown to ease feelings of loneliness, anxiety, depression and stress. Understanding the health benefits of a good dog walk can help us appreciate how much our pets mean to us."},
   {title: 'Little steps', user: users[1], channel: channels[1], content: "When coping with depression it can be hard to get out of bed sometimes. But setting small achievable such as getting out of bed or tidying your room can be a great first step in helping to put us in a positive mindset"},
@@ -38,7 +38,8 @@ discussions = Discussion.create([
   {title: 'Community Service ', user: users[3], channel: channels[3], content: "Consider community service or another activity that you enjoy. These situations present great opportunities to meet people and cultivate new friendships and social interactions."},
   {title: 'Meditation', user: users[4], channel: channels[4], content: "Meditation is one effective method we can use to combat stress. A simple and easy to follow form of meditation is to simple focus on your breath. This can be done whilst sitting or lying down (whichever is more comfortable), or even on a walk. Doing this for 10-15 minutes a day can help you to detress."}
   ])
-
+  
+  Reply.delete_all
   replies = Reply.create([
     {discussion: discussions[0], user: users[0], reply_text: "Yes OMG I love dogs "},
     {discussion: discussions[0], user: users[1], reply_text: "I'm more of a cat person"},
@@ -49,11 +50,13 @@ discussions = Discussion.create([
     {discussion: discussions[3], user: users[0], reply_text: "This is difficult to do during the pandemic unforntunately"},
     {discussion: discussions[4], user: users[1], reply_text: "This was super helpful."},
     ])
-
+  
+  DiscussionReport.delete_all
   discussion_reports = DiscussionReport.create([
     {discussion: discussions[0], review_status: 0}
     ])
-
+  
+  ReplyReport.delete_all
   reply_reports = ReplyReport.create([
     {reply: replies[3], review_status: 1},
     {reply: replies[2], review_status: 0}

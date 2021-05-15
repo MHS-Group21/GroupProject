@@ -8,7 +8,8 @@
     = stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    
+    = favicon_link_tag asset_path('MHS-Logo.png')
+
   %body
     - if flash[:notice]
       .notification.is-success.global-notification
@@ -51,3 +52,6 @@
     %section.section
       .container
         = yield
+
+    -# Renders the footer partial
+    = render "layouts/footer"

@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get "admin", to: "home#admin", as: :admin
   get "volunteer_list", to: "home#volunteer_list", as: :volunteer_list
   get "twitter", to: "home#twitter", as: :twitter
-  
+  get "policy", to: "home#policy", as: :policy
+
   #report routes
   resources :reports, :only => [:index, :create]
   get "reports/reply", to: "reports#show_reply"

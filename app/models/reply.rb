@@ -1,4 +1,5 @@
 class Reply < ApplicationRecord
+    # Establishing the relationship
     belongs_to :discussion
     belongs_to :user
     has_one :reply_report, dependent: :destroy
@@ -8,11 +9,13 @@ class Reply < ApplicationRecord
 
     has_one :reply_report, dependent: :destroy
 
+    # presence check when creating a new reply
     validates :reply_text, presence: true
 
     extend FriendlyId
     friendly_id :reply_text, use: [:slugged, :finders]
 
+    # Method to create friendly urls 
     def should_generate_new_friendly_id?
       reply_text_changed?
     end
