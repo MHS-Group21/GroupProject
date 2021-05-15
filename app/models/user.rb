@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :discussions, dependent: :destroy
   has_many :channels, through: :discussions
   has_many :discussion_report
+  has_one :volunteer
 
   enum role: [:user, :volunteer, :admin]
 

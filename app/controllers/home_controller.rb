@@ -53,7 +53,7 @@ class HomeController < ApplicationController
   end
 
   def questionnaire
-    unless helpers.volunteer? && current_user.quiz_complete == false
+    unless helpers.volunteer? && current_user.volunteer.questionaire == false
       # Alert text to let them know why they can't access the page
       #current_user.quiz_complete = false
       #current_user.save
@@ -67,7 +67,7 @@ class HomeController < ApplicationController
 
     if @total == 20
       flash.notice = "Well done. You have completed the volunteer training."
-      current_user.quiz_complete = true
+      current_user.volunteer.questionaire = true
       current_user.save
       redirect_to volunteer_path
     end

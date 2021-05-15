@@ -1,7 +1,13 @@
 # Depends on registration controller that is in devise
 class RegistrationsController < Devise::RegistrationsController
 
-  private
+  def create
+    super
+    if helpers.volunteer?
+      Volunteer.create({user: current_user})
+    end
+  end
+
   # Allowing a new parameter to be passed when a user signs up for an account
   # Only allows things that are permitted
   def sign_up_params

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_151119) do
+ActiveRecord::Schema.define(version: 2021_05_15_175646) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
@@ -84,10 +84,20 @@ ActiveRecord::Schema.define(version: 2021_05_15_151119) do
     t.string "username"
     t.boolean "id_verified", default: false
     t.boolean "questions_complete", default: false
-    t.boolean "quiz_complete", default: false
     t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "volunteers", force: :cascade do |t|
+    t.boolean "questionaire", default: false
+    t.boolean "verified", default: false
+    t.string "full_name"
+    t.integer "questionaire_attempts", default: 0
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_volunteers_on_user_id"
   end
 
 end
