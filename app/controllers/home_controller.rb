@@ -1,11 +1,12 @@
 class HomeController < ApplicationController
+  # Empty action at the moment so it could be removed later
   def index
   # If condition to send users to the right path
-    # If user is not logged in, sends them to the root path 
+    # If user is not logged in, sends them to the root path
     if !current_user.present?
       redirect_to root_path, alert: "Please sign in to view this page"
     # If user is volunteer, sends them to the volunteer path
-    elsif current_user.volunteer == true 
+    elsif current_user.volunteer == true
       redirect_to volunteer_path, notice: "Welcome Volunteer"
     # TODO If user is admin, sends them to the admin path
     elsif current_user.has_role?(:admin)
@@ -43,15 +44,38 @@ class HomeController < ApplicationController
   def twitter
     # Giving a username variable and an options variable that are used as parameters for the user_timeline method
     username = 'MHS_Group21'
-    options = {:count => 20, :include_rts => true, :tweet_mode => 'extended'}
+    options = {:count => 20, :include_rts => true}
     # Making a tweets variable that stores the JSON file that is received for user_timeline method
     @tweets = $client.user_timeline(username, options)
-    
+
     # Method to get tweets from home timeline
     # @tweets = $client.home_timeline
   end
 
-  def policy
+  def questionnaire
+    unless current_user.present? && current_user.volunteer == true && current_user.quiz_complete == false
+      # Alert text to let them know why they can't access the page
+      #current_user.quiz_complete = false
+      #current_user.save
+      redirect_to volunteer_path, alert: "Only a user who is volunteer and hasnt completed the quiz can view this page"
+    end
   end
 
+  def submit_questionnaire
+
+    @total = Integer(params[:question1]) + Integer(params[:question2]) + Integer(params[:question3]) + Integer(params[:question4]) + Integer(params[:question5]) + Integer(params[:question6]) + Integer(params[:question7]) + Integer(params[:question8]) + Integer(params[:question9]) + Integer(params[:question10]) + Integer(params[:question11]) + Integer(params[:question12]) + Integer(params[:question13]) + Integer(params[:question14]) + Integer(params[:question15])+ Integer(params[:question16])+ Integer(params[:question17]) + Integer(params[:question18]) + Integer(params[:question19]) + Integer(params[:question20])
+
+    if @total == 20
+      flash.notice = "Well done. You have completed the volunteer training."
+      current_user.quiz_complete = true
+      current_user.save
+      redirect_to volunteer_path
+    end
+
+    if @total < 20
+      #flash.alert = @total
+      flash.alert = "Unfortunately you have failed the training. You can try again when you're ready."
+      redirect_to volunteer_path
+    end
+  end
 end
