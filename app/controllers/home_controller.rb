@@ -44,7 +44,7 @@ class HomeController < ApplicationController
   def twitter
     # Giving a username variable and an options variable that are used as parameters for the user_timeline method
     username = 'MHS_Group21'
-    options = {:count => 20, :include_rts => true}
+    options = {:count => 20, :include_rts => true, :tweet_mode => 'extended'}
     # Making a tweets variable that stores the JSON file that is received for user_timeline method
     @tweets = $client.user_timeline(username, options)
 
