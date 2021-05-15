@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :channels, through: :discussions
   has_many :discussion_report
 
+  enum role: [:user, :volunteer, :admin]
+
   #this is a scope to check if a user is a volunteer
   scope :volunteer_list, -> { where(volunteer: true) }
 

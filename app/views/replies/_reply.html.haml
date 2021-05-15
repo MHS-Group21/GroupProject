@@ -20,7 +20,7 @@
               - reply.responses.each do |reply|
                 = render partial: 'replies/reply', locals: { reply: reply }
         %div{:id => "response-form-#{reply.id}"}
-    - if reply_author(reply) || has_role?(:admin)
+    - if reply_author(reply) || current_user.adim?
       %nav.level.is-mobile
         .level-left
           %a.level-item

@@ -4,7 +4,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   setup do
     @channel = channels(:one)
-    users(:one).add_role :admin
+    users(:one).admin!
     sign_in(users(:one))
   end
 

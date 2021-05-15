@@ -17,9 +17,9 @@ users = User.create([
   {email: 'niall@mhs.org', username: 'Niall', password: 'password'}
   ])
 
-  users[0].add_role :admin
-  users[1].add_role :admin
-  users[4].add_role :admin
+  users[0].admin!
+  users[1].admin!
+  users[4].admin!
 
 Channel.delete_all
 channels = Channel.create([
@@ -38,7 +38,7 @@ discussions = Discussion.create([
   {title: 'Community Service ', user: users[3], channel: channels[3], content: "Consider community service or another activity that you enjoy. These situations present great opportunities to meet people and cultivate new friendships and social interactions."},
   {title: 'Meditation', user: users[4], channel: channels[4], content: "Meditation is one effective method we can use to combat stress. A simple and easy to follow form of meditation is to simple focus on your breath. This can be done whilst sitting or lying down (whichever is more comfortable), or even on a walk. Doing this for 10-15 minutes a day can help you to detress."}
   ])
-  
+
   Reply.delete_all
   replies = Reply.create([
     {discussion: discussions[0], user: users[0], reply_text: "Yes OMG I love dogs "},
@@ -50,12 +50,12 @@ discussions = Discussion.create([
     {discussion: discussions[3], user: users[0], reply_text: "This is difficult to do during the pandemic unforntunately"},
     {discussion: discussions[4], user: users[1], reply_text: "This was super helpful."},
     ])
-  
+
   DiscussionReport.delete_all
   discussion_reports = DiscussionReport.create([
     {discussion: discussions[0], review_status: 0}
     ])
-  
+
   ReplyReport.delete_all
   reply_reports = ReplyReport.create([
     {reply: replies[3], review_status: 1},
