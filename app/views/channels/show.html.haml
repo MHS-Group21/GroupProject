@@ -4,7 +4,7 @@
   .level-left
     %h1.title.is-2= @channel.name
   .level-right
-    - if current_user.admin?
+    - if admin?
       = link_to 'Edit Channel', edit_channel_path(@channel), class:"button is-info"
 %hr/
 .columns

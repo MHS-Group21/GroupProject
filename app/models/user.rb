@@ -11,6 +11,6 @@ class User < ApplicationRecord
   enum role: [:user, :volunteer, :admin]
 
   #this is a scope to check if a user is a volunteer
-  scope :volunteer_list, -> { where(volunteer: true) }
+  scope :volunteer_list, -> { where(role: volunteer) }
 
 end

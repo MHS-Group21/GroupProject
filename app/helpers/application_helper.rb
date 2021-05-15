@@ -24,4 +24,11 @@ module ApplicationHelper
     markdown_to_plain_text.render(text).html_safe
   end
 
+  def admin?
+    current_user and current_user.admin?
+  end
+
+  def volunteer?
+    current_user and current_user.volunteer?
+  end
 end

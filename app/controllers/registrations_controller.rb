@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   # Only allows things that are permitted
   def sign_up_params
     # Added a volunteer parameter that changes the volunteer attribute value to true if checkbox is clicked
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :volunteer)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :role)
   end
 
   # Method for updating User accounts (Default devise methods)

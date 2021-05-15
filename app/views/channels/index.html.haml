@@ -1,7 +1,7 @@
 - content_for(:html_title) { 'MHS - Channels' }
 %p#notice= notice
 %h1.title.is-2 Channels
--if current_user.admin?
+-if admin?
   .level
     .level-left
     .level-right

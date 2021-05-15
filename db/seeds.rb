@@ -11,7 +11,7 @@ User.delete_all
 users = User.create([
   {email: 'james@mhs.org', username: 'James', password: 'password'},
   {email: 'felicia@mhs.org', username: 'Felicia', password: 'password'},
-  {email: 'mayu@mhs.org', username: 'Mayu', password: 'password', volunteer: true},
+  {email: 'mayu@mhs.org', username: 'Mayu', password: 'password', role: "volunteer"},
   {email: 'aron@mhs.org', username: 'Aron', password: 'password'},
   {email: 'jake@mhs.org', username: 'Jake', password: 'password'},
   {email: 'niall@mhs.org', username: 'Niall', password: 'password'}
