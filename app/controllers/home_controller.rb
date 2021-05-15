@@ -1,14 +1,15 @@
 class HomeController < ApplicationController
+  # Empty action at the moment so it could be removed later
   def index
   # If condition to send users to the right path
     # If user is not logged in, sends them to the root path
     if !current_user.present?
       redirect_to root_path, alert: "Please sign in to view this page"
     # If user is volunteer, sends them to the volunteer path
-  elsif helpers.volunteer?
+  elsif helper.volunteer?
       redirect_to volunteer_path, notice: "Welcome Volunteer"
     # TODO If user is admin, sends them to the admin path
-  elsif helpers.admin?
+  elsif helper.admin?
       redirect_to admin_path, notice: "Welcome Admin"
     else
       redirect_to edit_user_registration_path
@@ -30,11 +31,11 @@ class HomeController < ApplicationController
     end
 
     # If they completed both questionnaire and id verificaiton, make them an volunteer
-    # Maybe a btn to make the user become a volunteer (rolifiy wise)
+    # Maybe a btn to make the user becomecurrent_user.present? && current_user.volunteer == true a volunteer (rolifiy wise)
   end
 
   def volunteer_list
-    admin?
+    unless helpers.admin?
       redirect_to root_path, alert: "Only an admin can view this page"
     end
     @users = User.volunteer_list
@@ -43,7 +44,7 @@ class HomeController < ApplicationController
   def twitter
     # Giving a username variable and an options variable that are used as parameters for the user_timeline method
     username = 'MHS_Group21'
-    options = {:count => 20, :include_rts => true}
+    options = {:count => 20, :include_rts => true, :tweet_mode => 'extended'}
     # Making a tweets variable that stores the JSON file that is received for user_timeline method
     @tweets = $client.user_timeline(username, options)
 
@@ -52,7 +53,7 @@ class HomeController < ApplicationController
   end
 
   def questionnaire
-    unless current_user.present? && current_user.volunteer == true && current_user.quiz_complete == false
+    unless helpers.volunteer? && current_user.quiz_complete == false
       # Alert text to let them know why they can't access the page
       #current_user.quiz_complete = false
       #current_user.save
@@ -77,3 +78,4 @@ class HomeController < ApplicationController
       redirect_to volunteer_path
     end
   end
+end
