@@ -24,7 +24,7 @@ class ReportsController < ApplicationController
     else
       @report = ReplyReport.new({reply_id: params[:reply_id], user: current_user})
     end
-    if volunteer?
+    if helpers.volunteer?
       @report.review_status = 1
     else
       @report.review_status = 0

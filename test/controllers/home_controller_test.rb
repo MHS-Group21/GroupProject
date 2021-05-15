@@ -16,6 +16,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
   test "redirect if not volunteer" do
     sign_in users(:two)
+    users(:two).user!
     get volunteer_path
     assert_response :redirect
   end
