@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "volunteer_list", to: "home#volunteer_list", as: :volunteer_list
   get "contact", to: "home#contact"
 
+  #post request for contact form
   post 'request_contact', to: 'home#request_contact'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

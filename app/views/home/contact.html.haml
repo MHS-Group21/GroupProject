@@ -2,22 +2,20 @@
 %section.section
   .container
     .columns.is-centered
-      .column.is-4
-        :css
-          form label  {display: block; margin: 10px;}
-          form input  {width: 100%; padding: 12px 20px;margin: 8px 0;display: inline-block;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;}
-          input[type=submit] {  background-color: #4CAF50; color: white;}
-          input[type=submit]:hover {background-color: #45a049;}
-        %h2.title.is-2 Contact Page
-        = form_tag request_contact_path, method: 'post' do
+      .column.is-5
 
-          = label_tag :name, "Name"
-          = text_field_tag :name, '', title: "Enter Name", size: 50
+        %div.contactPage
+          %h2.title.is-2 Contact Page
+          =label_tag :saying, "Please contact us if you would like to report any discussions or comments. Please include the channel name, discussion name and an optional reply. We will look into the issue within 24 hours."
+          = form_tag request_contact_path, method: 'post' do
 
-          = label_tag :email, t('.email')
-          = email_field_tag :email, '', title: "Enter email"
+            = label_tag :name, "Name"
+            = text_field_tag :name, '', title: "Enter Name", size: 50
 
-          = label_tag :message, t('.message')
-          = text_field_tag :message, '', title: t('.enter_message'), size: 100
+            = label_tag :email, t('.email')
+            = email_field_tag :email, '', title: "Enter email"
 
-          = submit_tag "Contact us"
+            = label_tag :message, t('.message')
+            = text_field_tag :message, '', title: t('.enter_message'), size: 100
+
+            = submit_tag "Contact us"
