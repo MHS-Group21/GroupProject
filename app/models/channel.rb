@@ -11,4 +11,8 @@ class Channel < ApplicationRecord
       name_changed?
     end
 
+    #Validation
+    validates :name, length: {minimum: 4, maximum: 25}
+    validates :name, presence: true
+    validates :name, uniqueness: { case_sensitive: false }
   end

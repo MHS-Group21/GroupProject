@@ -5,8 +5,9 @@ class Discussion < ApplicationRecord
     has_many :replies, dependent: :destroy
     has_one :discussion_report, dependent: :destroy
 
-    # presence check when creating a new discussion
-    validates :title, :content, presence: true
+    #validation
+    validates :title, length: {minimum: 4, maximum: 25}
+    validates :title, :content, :user, :channel, presence: true
 
     extend FriendlyId
     friendly_id :title, use: [:slugged, :finders]

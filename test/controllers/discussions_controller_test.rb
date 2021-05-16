@@ -19,7 +19,7 @@ class DiscussionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create discussion" do
     assert_difference('Discussion.count') do
-      post discussions_url, params: { discussion: { content: @discussion.content, title: @discussion.title, channel_id: channels(:one).id } }
+      post discussions_url, params: { discussion: { content: @discussion.content, title: @discussion.title+"new", channel_id: channels(:one).id, user_id: users(:one)} }
     end
 
     assert_redirected_to discussion_url(Discussion.last)
@@ -36,7 +36,7 @@ class DiscussionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update discussion" do
-    patch discussion_url(@discussion), params: { discussion: { content: @discussion.content, title: @discussion.title, channel_id: channels(:one).id } }
+    patch discussion_url(@discussion), params: { discussion: { content: @discussion.content+"asdfas", title: @discussion.title, channel_id: channels(:one).id} }
     assert_redirected_to discussion_url(@discussion)
   end
 
