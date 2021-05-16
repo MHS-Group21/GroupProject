@@ -1,6 +1,7 @@
 # Depends on registration controller that is in devise
 class RegistrationsController < Devise::RegistrationsController
 
+  #Redefine create action to create volunteer object if required
   def create
     super
     if helpers.volunteer?

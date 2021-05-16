@@ -53,7 +53,6 @@ class ReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     #If discussion_id param is present find report of that discussion
     #Otherwise use reply_id param to find report of that reply
     def set_report
