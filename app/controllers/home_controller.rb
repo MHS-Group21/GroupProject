@@ -79,9 +79,11 @@ class HomeController < ApplicationController
     end
   end
 
-  def contact
+  def policy
   end
 
+  def contact
+  end
   #sends contact email to user
   def request_contact
     @name = params[:name]

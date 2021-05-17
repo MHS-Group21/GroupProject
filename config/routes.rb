@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get "admin", to: "home#admin", as: :admin
   get "volunteer_list", to: "home#volunteer_list", as: :volunteer_list
   get "twitter", to: "home#twitter", as: :twitter
-
-  get "contact", to: "home#contact"
+  get "policy", to: "home#policy", as: :policy
+  get "contact", to: "home#contact", as: :contact
 
   #post request for contact form
   post 'request_contact', to: 'home#request_contact'
