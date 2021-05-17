@@ -6,10 +6,10 @@ class HomeController < ApplicationController
     if !current_user.present?
       redirect_to root_path, alert: "Please sign in to view this page"
     # If user is volunteer, sends them to the volunteer path
-  elsif helper.volunteer?
+  elsif helpers.volunteer?
       redirect_to volunteer_path, notice: "Welcome Volunteer"
     # TODO If user is admin, sends them to the admin path
-  elsif helper.admin?
+  elsif helpers.admin?
       redirect_to admin_path, notice: "Welcome Admin"
     else
       redirect_to edit_user_registration_path
