@@ -4,7 +4,13 @@
 div.questionnaire{
 form label {display: block;}
 form input {width: 100%; padding: 12px 20px;margin: 8px 0;display: inline-block; border: 1px solid #ccc;border-radius: 4px; box-sizing: border-box;}
-input[type=submit] {margin-left:1.9%;background-color: red; color: white; width: 99%; } 
+input[type=submit] {margin-left:1.9%;background-color: red; color: white; width: 99%; }
 div.question {padding: 10px;  border: 2px solid green;  margin: 10px;width: 100%; border-style: groove;border-radius:10px;}
 select {width: 100%}
+
+div.contactPage{
+  form label  {display: block; margin: 10px;}
+  form input  {width: 100%; padding: 12px 20px;margin: 8px 0;display: inline-block;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;}
+  input[type=submit] {  background-color: #4CAF50; color: white;}
+  input[type=submit]:hover {background-color: #45a049;}
 }

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get "volunteer_list", to: "home#volunteer_list", as: :volunteer_list
   get "twitter", to: "home#twitter", as: :twitter
 
+  get "contact", to: "home#contact"
+
+  #post request for contact form
+  post 'request_contact', to: 'home#request_contact'
 
   #report routes
   resources :reports, :only => [:index, :create]

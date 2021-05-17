@@ -1,0 +1,21 @@
+//%h1= "Contact page"
+%section.section
+  .container
+    .columns.is-centered
+      .column.is-5
+
+        %div.contactPage
+          %h2.title.is-2 Contact Page
+          =label_tag :saying, "Please contact us if you would like to report any discussions or comments. Please include the channel name, discussion name and an optional reply. We will look into the issue within 24 hours."
+          = form_tag request_contact_path, method: 'post' do
+
+            = label_tag :name, "Name"
+            = text_field_tag :name, '', title: "Enter Name", size: 50
+
+            = label_tag :email, t('.email')
+            = email_field_tag :email, '', title: "Enter email"
+
+            = label_tag :message, t('.message')
+            = text_field_tag :message, '', title: t('.enter_message'), size: 100
+
+            = submit_tag "Contact us"
