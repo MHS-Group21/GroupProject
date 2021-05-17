@@ -17,17 +17,18 @@ class ReportsController < ApplicationController
     @report = DiscussionReport.find(params[:id])
   end
 
-  # POST /reports or /reports.json
+  # create a new report
   def create
     if is_discussion
       @report = DiscussionReport.new({discussion_id: params[:discussion_id], user: current_user})
     else
       @report = ReplyReport.new({reply_id: params[:reply_id], user: current_user})
     end
+    #If the report is made by volunteer hide content until reviewed
     if helpers.volunteer?
-      @report.review_status = 1
+      @report.review_status = :unreviewed_hidden
     else
-      @report.review_status = 0
+      @report.review_status = :unreviewed
     end
     respond_to do |format|
       if @report.save
@@ -36,7 +37,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reports/1 or /reports/1.json
+  #Update an existing report
   def update
     respond_to do |format|
       if @report.update(report_params)
