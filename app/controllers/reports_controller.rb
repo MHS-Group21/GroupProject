@@ -17,17 +17,18 @@ class ReportsController < ApplicationController
     @report = DiscussionReport.find(params[:id])
   end
 
-  # POST /reports or /reports.json
+  # create a new report
   def create
     if is_discussion
       @report = DiscussionReport.new({discussion_id: params[:discussion_id], user: current_user})
     else
       @report = ReplyReport.new({reply_id: params[:reply_id], user: current_user})
     end
-    if current_user.volunteer?
-      @report.review_status = 1
+    #If the report is made by volunteer hide content until reviewed
+    if helpers.volunteer?
+      @report.review_status = :unreviewed_hidden
     else
-      @report.review_status = 0
+      @report.review_status = :unreviewed
     end
     respond_to do |format|
       if @report.save
@@ -36,7 +37,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reports/1 or /reports/1.json
+  #Update an existing report
   def update
     respond_to do |format|
       if @report.update(report_params)
@@ -53,7 +54,6 @@ class ReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     #If discussion_id param is present find report of that discussion
     #Otherwise use reply_id param to find report of that reply
     def set_report

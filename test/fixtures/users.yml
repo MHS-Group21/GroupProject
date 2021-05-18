@@ -7,20 +7,19 @@
 one:
   email: volunteer@test.com
   encrypted_password: <%= User.new.send(:password_digest, '123456') %>
-  volunteer: true
+  role: volunteer
 
 two:
   email: normaluser@test.com
   encrypted_password: <%= User.new.send(:password_digest, '123456') %>
-  volunteer: false
+  role: user
 
 three:
   email: admin@test.com
   encrypted_password: <%= User.new.send(:password_digest, '123456') %>
-  roles: admin
+  role: admin
 
 four:
   email: volunteerWithoutTest@test.com
   encrypted_password: <%= User.new.send(:password_digest, '123456') %>
-  volunteer: true
-  quiz_complete: true
+  role: volunteer

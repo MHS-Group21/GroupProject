@@ -1,9 +1,5 @@
 module ApplicationHelper
   require 'redcarpet/render_strip'
-  #checking if user has role assigned to them (admin) or normal
-  def has_role?(role)
-    current_user && current_user.has_role?(role)
-  end
 
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language)
@@ -28,4 +24,11 @@ module ApplicationHelper
     markdown_to_plain_text.render(text).html_safe
   end
 
+  def admin?
+    current_user and current_user.admin?
+  end
+
+  def volunteer?
+    current_user and current_user.volunteer?
+  end
 end

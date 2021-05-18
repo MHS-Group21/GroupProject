@@ -42,8 +42,6 @@ gem 'simple_form', '~> 5.1.0'  # Simpler forms
 gem 'devise', '~> 4.4', '>= 4.4.1' # User authentication platform
 gem 'gravatar_image_tag', '~> 1.2'  # User accounts
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'  # jQuery
-gem 'rolify', '~> 5.2'  # Help assign admin roles
-gem 'cancancan', '~> 2.1', '>= 2.1.3' # Help assign admin roles
 gem 'friendly_id', '~> 5.2', '>= 5.2.3' # Creates slugs for URL
 gem 'redcarpet', '~> 3.4' # Markdown parser
 gem 'coderay', '~> 1.1', '>= 1.1.2' # Markdown parser

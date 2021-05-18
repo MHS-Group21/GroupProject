@@ -1,7 +1,7 @@
 class DiscussionsController < ApplicationController
   # List of before actions to do for the controller
   before_action :set_discussion, only: %i[ show edit update destroy ]
-  before_action :find_channels, only: [:index, :show, :new, :edit, :create]
+  before_action :find_channels, only: [:index, :show, :new, :edit, :create, :update]
   before_action :authenticate_user!, except: [:index, :show]
 
 

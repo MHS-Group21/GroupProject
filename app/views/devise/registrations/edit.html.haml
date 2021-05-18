@@ -5,7 +5,7 @@
       .column.is-4
         %h2.title.is-2
           Edit #{resource_name.to_s.humanize}
-        - if has_role?(:admin)
+        - if admin?
           .notification
             %p
               You are currently an
