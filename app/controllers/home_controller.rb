@@ -58,7 +58,7 @@ class HomeController < ApplicationController
 
   #Volunteer questionaire
   def questionnaire
-    unless helpers.volunteer? && current_user.volunteer.questionaire == false
+    unless helpers.volunteer? || current_user.volunteer.questionaire == false || current_user.volunteer.questionaire_attempts < 3
       # Alert text to let them know why they can't access the page
       #current_user.quiz_complete = false
       #current_user.save
@@ -80,6 +80,7 @@ class HomeController < ApplicationController
     if @total < 20
       #flash.alert = @total
       flash.alert = "Unfortunately you have failed the training. You can try again when you're ready."
+      current_user.volunteer.questionaire_attempts += 1
       redirect_to volunteer_path
     end
   end
