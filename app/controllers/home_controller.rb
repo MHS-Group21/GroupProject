@@ -58,7 +58,7 @@ class HomeController < ApplicationController
 
   #Volunteer questionaire
   def questionnaire
-    unless helpers.volunteer? || current_user.volunteer.questionaire == false || current_user.volunteer.questionaire_attempts < 3
+    if (!helpers.volunteer? || current_user.volunteer.questionaire == true || current_user.volunteer.questionaire_attempts > 3)
       # Alert text to let them know why they can't access the page
       #current_user.quiz_complete = false
       #current_user.save
